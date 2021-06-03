@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+<div class="container">
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>  
+        {% endfor %}
+    {% endif %}
+</div>
+
+{% block content %}
+    <table style="font-family: arial, sans-serif;border-collapse: collapse;width: 100%;">
+        <tr>
+            <th style="border: 1px solid #dddddd;text-align: left;padding: 8px;">DB Server</th>
+            <th style="border: 1px solid #dddddd;text-align: left;padding: 8px;">DB Host</th>
+            <th style="border: 1px solid #dddddd;text-align: left;padding: 8px;">DB Port</th>
+            <th style="border: 1px solid #dddddd;text-align: left;padding: 8px;">DB Name </th>
+            <th style="border: 1px solid #dddddd;text-align: left;padding: 8px;">DB Login Username</th>
+            <th style="border: 1px solid #dddddd;text-align: left;padding: 8px;">DB Login Password</th>
+          </tr>
+    {% for data in app_data %}
+        <tr>
+            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{data.db_server}}</td>
+            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{data.db_host}}</td>
+            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{data.db_port}}</td>
+            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{data.db_name}}</td>
+            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{data.db_login_username}}</td>
+            <td style="border: 1px solid #dddddd;text-align: left;padding: 8px;">{{data.db_login_password}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    <br>
+    <div align='center'>
+        <button style="width:330px" type="submit" class="btn btn-danger"><a href="{% url 'home' %}">Close</a></button>
+    </div>
+{% endblock %}

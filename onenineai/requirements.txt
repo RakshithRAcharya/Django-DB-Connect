@@ -1,0 +1,4 @@
+Django
+pymysql
+psycopg2
+cx-Oracle
